@@ -20,4 +20,21 @@ sensor:
     username: <growatt server username>
     password: <growatt server password>
 ```
+
+That was the basic set up, if you have multiple plants you could add them by adding another platform.
+
+```
+sensor:
+  - platform: growatt
+    name: <name for the inverters added>
+    plant_id: <the id of this plant>
+    username: <growatt server username>
+    password: <growatt server password>
+  - platform: growatt
+    name: <name for the inverters added>
+    plant_id: <the id of this plant>
+    username: <growatt server username>
+    password: <growatt server password>
+```
+
 The api endpoints were discovered by reverse engineering the growatt app, these may change in the future.

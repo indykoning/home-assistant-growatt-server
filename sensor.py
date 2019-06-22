@@ -30,6 +30,7 @@ plant_id = 0
 """configuration for accessing the Unifi Controller"""
 CONF_USERNAME = 'username'
 CONF_PASSWORD = 'password'
+CONF_PLANT_ID = 'plant_id'
 DEFAULT_UNIT = 'kW'
 DEFAULT_NAME = 'Growatt'
 SCAN_INTERVAL = datetime.timedelta(minutes=5)
@@ -37,6 +38,7 @@ SCAN_INTERVAL = datetime.timedelta(minutes=5)
 """Define the schema for the Sensor Platform"""
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
+    vol.Optional(CONF_PLANT_ID, default='0'): cv.string,
     vol.Required(CONF_USERNAME): cv.string,
     vol.Required(CONF_PASSWORD): cv.string
 })
@@ -47,14 +49,18 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """get all the parameters passed by the user to access the controller"""
     username = config.get(CONF_USERNAME)
     password = config.get(CONF_PASSWORD)
+    plant_id = config.get(CONF_PLANT_ID)
     name = config.get(CONF_NAME)
 
     api = GrowattApi()
 
     login_res = api.login(username, password)
     user_id = login_res['userId']
-    plant_info = api.plant_list(user_id)
-    plant_id = plant_info['data'][0]['plantId']
+    if plant_id is '0':
+        plant_info = api.plant_list(user_id)
+        plant_id = plant_info['data'][0]['plantId']
+        pass
+
     inverters = []
     try:
         inverters = api.inverter_list(plant_id)
