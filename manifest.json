@@ -1,0 +1,8 @@
+{
+  "domain": "growatt",
+  "name": "growatt",
+  "documentation": "https://www.home-assistant.io/components/growatt",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@indykoning"]
+}
