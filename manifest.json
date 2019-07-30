@@ -2,7 +2,7 @@
   "domain": "growatt",
   "name": "growatt",
   "documentation": "https://github.com/indykoning/home-assistant-growatt-server/blob/master/README.md",
-  "requirements": [],
+  "requirements": ["growattServer==0.0.1"],
   "dependencies": [],
   "codeowners": ["@indykoning"]
 }
