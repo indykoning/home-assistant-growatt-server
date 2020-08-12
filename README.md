@@ -1,8 +1,7 @@
 # Home Assistant Growatt server integration
+**I am not actively maintaining this anymore, most (if not all) features are already available in the latest Home Assistant version.**
+
 This is a sensor to collect information from your growatt inverters using growatt server.
-Thanks to [This thread](https://community.home-assistant.io/t/anyone-experience-with-connecting-a-growatt-solar-inverter/60430/2)
-and [This library](https://github.com/Sjord/growatt_api_client)
-which i started off using but was lacking causing me to add my own code to it.
 
 This will log into your growatt account and grab the first "Plant" after which it collects the inverters on this plant and creates sensors for these inverters as well as a total sensor.
 
